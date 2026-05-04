@@ -54,7 +54,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5Zjg0ZDU1M
 ### Obtener perfil propio
 
 GET http://localhost:3001/api/users/me
-Authorization: Bearer PEGA_AQUI_TU_TOKEN
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5Zjg0ZDU1MjM0MmUwZTZlMDc4ZGZlNCIsInJvbCI6InVzdWFyaW8iLCJpYXQiOjE3Nzc4ODI0NjksImV4cCI6MTc3ODQ4NzI2OX0.cGCSjrInaJ5KAYBZ3E95Iov7vsUdzpXsD6GHwp4Uxn8
 
 ### Actualizar perfil
 
@@ -65,4 +65,19 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5Zjg0ZDU1M
 {
   "nombre": "Iván García Cuesta",
   "equipoFavorito": "FC Barcelona"
+}
+
+### Crear grupo
+
+POST http://localhost:3001/api/grupos
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5Zjg0ZDU1MjM0MmUwZTZlMDc4ZGZlNCIsInJvbCI6InVzdWFyaW8iLCJpYXQiOjE3Nzc4ODI0NjksImV4cCI6MTc3ODQ4NzI2OX0.cGCSjrInaJ5KAYBZ3E95Iov7vsUdzpXsD6GHwp4Uxn8
+
+{
+  "nombre": "Peña Barcelonista",
+  "descripcion": "Grupo de amigos del Barça",
+  "liga": "LaLiga",
+  "modo": "1X2",
+  "apuesta": "El último paga la ronda",
+  "visibilidad": "privado"
 }
