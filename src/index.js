@@ -4,6 +4,7 @@ const cors = require('cors')
 require('dotenv').config()
 
 const authRoutes = require('./routes/authRoutes')
+const userRoutes = require('./routes/userRoutes')
 
 const app = express()
 
@@ -15,6 +16,7 @@ mongoose.connect(process.env.MONGODB_URI)
   .catch((err) => console.log('Error de conexión:', err))
 
 app.use('/api/auth', authRoutes)
+app.use('/api/users', userRoutes)
 
 app.get('/', (req, res) => {
   res.json({ mensaje: 'API de RivalPick funcionando' })
