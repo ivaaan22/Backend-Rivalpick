@@ -41,3 +41,12 @@ Content-Type: application/json
   "email": "ivan@test.com",
   "password": "incorrecta"
 }
+
+### Verificar token (sin token, debe fallar)
+
+GET http://localhost:3001/api/auth/verificar
+
+### Verificar token (con token correcto)
+
+GET http://localhost:3001/api/auth/verificar
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5Zjg0ZDU1MjM0MmUwZTZlMDc4ZGZlNCIsInJvbCI6InVzdWFyaW8iLCJpYXQiOjE3Nzc4ODI0NjksImV4cCI6MTc3ODQ4NzI2OX0.cGCSjrInaJ5KAYBZ3E95Iov7vsUdzpXsD6GHwp4Uxn8
