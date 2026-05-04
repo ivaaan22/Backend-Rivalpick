@@ -1,0 +1,23 @@
+### Registro de usuario
+
+POST http://localhost:3000/api/auth/registro
+Content-Type: application/json
+
+{
+  "nombre": "Iván García",
+  "email": "ivan@test.com",
+  "password": "123456",
+  "username": "ivangarcia"
+}
+
+### Registro con email duplicado (debe fallar)
+
+POST http://localhost:3000/api/auth/registro
+Content-Type: application/json
+
+{
+  "nombre": "Otro Iván",
+  "email": "ivan@test.com",
+  "password": "123456",
+  "username": "otrouser"
+}
