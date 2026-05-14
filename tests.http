@@ -153,3 +153,9 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5Zjg0ZDU1M
 
 DELETE http://localhost:3001/api/grupos/PEGA_AQUI_ID_DE_OTRO_GRUPO
 Authorization: Bearer PEGA_AQUI_TU_TOKEN
+
+
+### Obtener partidos de una jornada (API externa)
+
+GET http://localhost:3001/api/partidos?liga=LaLiga&jornada=30
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5Zjg0ZDU1MjM0MmUwZTZlMDc4ZGZlNCIsInJvbCI6ImFkbWluIiwiaWF0IjoxNzc4NzQ3MzE2LCJleHAiOjE3NzkzNTIxMTZ9.EyU6NNc8hIbzvLF5rFJAo9OHQGnA5HdIPedG-fCkH-k

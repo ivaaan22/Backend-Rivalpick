@@ -6,6 +6,7 @@ require('dotenv').config()
 const authRoutes = require('./routes/authRoutes')
 const userRoutes = require('./routes/userRoutes')
 const grupoRoutes = require('./routes/grupoRoutes')
+const partidoRoutes = require('./routes/partidoRoutes')
 
 const app = express()
 
@@ -19,6 +20,7 @@ mongoose.connect(process.env.MONGODB_URI)
 app.use('/api/auth', authRoutes)
 app.use('/api/users', userRoutes)
 app.use('/api/grupos', grupoRoutes)
+app.use('/api/partidos', partidoRoutes)
 
 app.get('/', (req, res) => {
   res.json({ mensaje: 'API de RivalPick funcionando' })
