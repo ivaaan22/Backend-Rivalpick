@@ -122,3 +122,13 @@ Content-Type: application/json
   "email": "prueba@test.com",
   "password": "123456"
 }
+
+### Obtener mis grupos
+
+GET http://localhost:3001/api/grupos/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMDU3YTZkNDVjNDhmMmNkYWYwZDIwNSIsInJvbCI6InVzdWFyaW8iLCJpYXQiOjE3Nzg3NDQ4MTIsImV4cCI6MTc3OTM0OTYxMn0.-qu2IjSu1dr0XpcWgcWbxEjI3bdYBUCnEm4sDx-5MA4
+
+### Obtener detalle de un grupo
+
+GET http://localhost:3001/api/grupos/69f85acc448f4896c64b8832
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMDU3YTZkNDVjNDhmMmNkYWYwZDIwNSIsInJvbCI6InVzdWFyaW8iLCJpYXQiOjE3Nzg3NDQ4MTIsImV4cCI6MTc3OTM0OTYxMn0.-qu2IjSu1dr0XpcWgcWbxEjI3bdYBUCnEm4sDx-5MA4
