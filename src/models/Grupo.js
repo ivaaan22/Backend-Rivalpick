@@ -12,7 +12,7 @@ const grupoSchema = new mongoose.Schema({
   liga: {
     type: String,
     required: true,
-    enum: ['LaLiga', 'Premier', 'Bundesliga', 'SerieA', 'Ligue1', 'Champions']
+    enum: ['LaLiga', 'Premier', 'Bundesliga', 'SerieA', 'Ligue1']
   },
   modo: {
     type: String,

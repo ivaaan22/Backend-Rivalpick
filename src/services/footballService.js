@@ -6,7 +6,6 @@ const ligasMap = {
   Bundesliga: 'BL1',
   SerieA: 'SA',
   Ligue1: 'FL1',
-  Champions: 'CL'
 }
 
 const obtenerPartidosPorJornada = async (liga, jornada) => {
