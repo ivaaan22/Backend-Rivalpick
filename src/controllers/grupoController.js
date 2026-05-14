@@ -57,4 +57,43 @@ const crearGrupo = async (req, res) => {
   }
 }
 
-module.exports = { crearGrupo }
+const unirseGrupo = async (req, res) => {
+  try {
+    const { codigoInvitacion } = req.body
+
+    if (!codigoInvitacion) {
+      return res.status(400).json({ mensaje: 'El código de invitación es obligatorio' })
+    }
+
+    const grupo = await Grupo.findOne({ codigoInvitacion: codigoInvitacion.toUpperCase() })
+    if (!grupo) {
+      return res.status(404).json({ mensaje: 'No existe ningún grupo con ese código' })
+    }
+
+    const membresiaExistente = await Membresia.findOne({
+      userId: req.usuario.id,
+      grupoId: grupo._id
+    })
+    if (membresiaExistente) {
+      return res.status(400).json({ mensaje: 'Ya perteneces a este grupo' })
+    }
+
+    const membresia = new Membresia({
+      userId: req.usuario.id,
+      grupoId: grupo._id,
+      rol: 'miembro'
+    })
+
+    await membresia.save()
+
+    res.status(201).json({
+      mensaje: 'Te has unido al grupo correctamente',
+      grupo
+    })
+
+  } catch (error) {
+    res.status(500).json({ mensaje: 'Error en el servidor', error: error.message })
+  }
+}
+
+module.exports = { crearGrupo, unirseGrupo }
