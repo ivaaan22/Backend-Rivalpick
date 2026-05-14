@@ -159,4 +159,76 @@ const obtenerDetalleGrupo = async (req, res) => {
   }
 }
 
-module.exports = { crearGrupo, unirseGrupo, obtenerMisGrupos, obtenerDetalleGrupo }
+const editarGrupo = async (req, res) => {
+  try {
+    const { id } = req.params
+    const { nombre, descripcion, apuesta, visibilidad } = req.body
+
+    const grupo = await Grupo.findById(id)
+    if (!grupo) {
+      return res.status(404).json({ mensaje: 'Grupo no encontrado' })
+    }
+
+    if (nombre) grupo.nombre = nombre
+    if (descripcion !== undefined) grupo.descripcion = descripcion
+    if (apuesta !== undefined) grupo.apuesta = apuesta
+    if (visibilidad) grupo.visibilidad = visibilidad
+
+    await grupo.save()
+
+    res.json({
+      mensaje: 'Grupo actualizado correctamente',
+      grupo
+    })
+
+  } catch (error) {
+    res.status(500).json({ mensaje: 'Error en el servidor', error: error.message })
+  }
+}
+
+const eliminarGrupo = async (req, res) => {
+  try {
+    const { id } = req.params
+
+    const grupo = await Grupo.findById(id)
+    if (!grupo) {
+      return res.status(404).json({ mensaje: 'Grupo no encontrado' })
+    }
+
+    await Membresia.deleteMany({ grupoId: id })
+    await Grupo.findByIdAndDelete(id)
+
+    res.json({ mensaje: 'Grupo eliminado correctamente' })
+
+  } catch (error) {
+    res.status(500).json({ mensaje: 'Error en el servidor', error: error.message })
+  }
+}
+
+const expulsarMiembro = async (req, res) => {
+  try {
+    const { id, userId } = req.params
+
+    if (userId === req.usuario.id) {
+      return res.status(400).json({ mensaje: 'No puedes expulsarte a ti mismo' })
+    }
+
+    const membresia = await Membresia.findOne({
+      userId: userId,
+      grupoId: id
+    })
+
+    if (!membresia) {
+      return res.status(404).json({ mensaje: 'Este usuario no pertenece al grupo' })
+    }
+
+    await Membresia.findByIdAndDelete(membresia._id)
+
+    res.json({ mensaje: 'Miembro expulsado correctamente' })
+
+  } catch (error) {
+    res.status(500).json({ mensaje: 'Error en el servidor', error: error.message })
+  }
+}
+
+module.exports = { crearGrupo, unirseGrupo, obtenerMisGrupos, obtenerDetalleGrupo, editarGrupo, eliminarGrupo, expulsarMiembro }

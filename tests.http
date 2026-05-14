@@ -1,6 +1,6 @@
 ### Registro de usuario
 
-POST http://localhost:3000/api/auth/registro
+POST http://localhost:3001/api/auth/registro
 Content-Type: application/json
 
 {
@@ -12,7 +12,7 @@ Content-Type: application/json
 
 ### Registro con email duplicado (debe fallar)
 
-POST http://localhost:3000/api/auth/registro
+POST http://localhost:3001/api/auth/registro
 Content-Type: application/json
 
 {
@@ -132,3 +132,24 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMDU3YTZkN
 
 GET http://localhost:3001/api/grupos/69f85acc448f4896c64b8832
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMDU3YTZkNDVjNDhmMmNkYWYwZDIwNSIsInJvbCI6InVzdWFyaW8iLCJpYXQiOjE3Nzg3NDQ4MTIsImV4cCI6MTc3OTM0OTYxMn0.-qu2IjSu1dr0XpcWgcWbxEjI3bdYBUCnEm4sDx-5MA4
+
+### Editar grupo (como admin)
+
+PUT http://localhost:3001/api/grupos/69f85acc448f4896c64b8832
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5Zjg0ZDU1MjM0MmUwZTZlMDc4ZGZlNCIsInJvbCI6ImFkbWluIiwiaWF0IjoxNzc4NzQ1OTkzLCJleHAiOjE3NzkzNTA3OTN9.Oc5TdkgZJ7d3VAU3QVG6vUDExq9lnB4yZxxsiRldQ54
+
+{
+  "descripcion": "Descripción editada del grupo",
+  "apuesta": "El último paga dos rondas"
+}
+
+### Expulsar a un miembro (como admin)
+
+DELETE http://localhost:3001/api/grupos/69f85acc448f4896c64b8832/miembros/6a057a6d45c48f2cdaf0d205
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5Zjg0ZDU1MjM0MmUwZTZlMDc4ZGZlNCIsInJvbCI6ImFkbWluIiwiaWF0IjoxNzc4NzQ1OTkzLCJleHAiOjE3NzkzNTA3OTN9.Oc5TdkgZJ7d3VAU3QVG6vUDExq9lnB4yZxxsiRldQ54
+
+### Eliminar grupo (como admin) - NO LO EJECUTES TODAVÍA
+
+DELETE http://localhost:3001/api/grupos/PEGA_AQUI_ID_DE_OTRO_GRUPO
+Authorization: Bearer PEGA_AQUI_TU_TOKEN
